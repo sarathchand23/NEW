@@ -1,0 +1,39 @@
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
+public class RewardValueTest {
+
+    @Test
+    public void testGetCashValue() {
+        // Test for the constructor that accepts cash value
+        RewardValue reward1 = new RewardValue(50.0);
+        assertEquals(50.0, reward1.getCashValue(), 0.001);
+
+        // Test for the constructor that accepts miles value
+        RewardValue reward2 = new RewardValue(100.0, true);
+        assertEquals(350.0, reward2.getCashValue(), 0.001);
+    }
+
+    @Test
+    public void testGetMilesValue() {
+        // Test for the constructor that accepts cash value
+        RewardValue reward1 = new RewardValue(75.0);
+        assertEquals(21428.571, reward1.getMilesValue(), 0.001);
+
+        // Test for the constructor that accepts miles value
+        RewardValue reward2 = new RewardValue(200.0, true);
+        assertEquals(200.0, reward2.getMilesValue(), 0.001);
+    }
+
+    @Test
+    public void testConversionFromMilesToCash() {
+        RewardValue reward = new RewardValue(500.0, true);
+        assertEquals(1.75, reward.getCashValue(), 0.001);
+    }
+
+    @Test
+    public void testConversionFromCashToMiles() {
+        RewardValue reward = new RewardValue(25.0);
+        assertEquals(7142.857, reward.getMilesValue(), 0.001);
+    }
+}
